@@ -1,6 +1,7 @@
 import express from 'express'; //import expresss
 import bodyParser from 'body-parser'; //import body-parser
 import mongoose from 'mongoose'; //import mongoose
+import userModel from './models/user.js';
 
 //initializ the backend software to a variable
 const app = express();
@@ -31,14 +32,7 @@ app.get("/",(req,res)=>{
 
 //handling post httpRequests
 app.post("/",(req,res)=>{
-    //saving user data to db
-    const userSchema = new mongoose.Schema({
-        name: String,
-        age: Number,
-        city : String
-    })
-    //declaring new  model
-    const userModel = new mongoose.model("user",userSchema);
+ 
 
     //declaring new user
     const user =new userModel(req.body);
