@@ -3,7 +3,7 @@ import bodyParser from 'body-parser'; //import body-parser
 import mongoose from 'mongoose'; //import mongoose
 
 //initializ the backend software to a variable
-let app = express();
+const app = express();
 
 //mongodb connection setup 
 mongoose.connect("mongodb+srv://chathura:chathura123@cluster0.eeqbvtb.mongodb.net/?appName=Cluster0").then(
@@ -31,12 +31,37 @@ app.get("/",(req,res)=>{
 
 //handling post httpRequests
 app.post("/",(req,res)=>{
-    console.log(res)
-    console.log("Post request recieved");
-    res.json({
-        "message": "This is a post httpRequest."
-    });
-})
+    //saving user data to db
+    const userSchema = new mongoose.Schema({
+        name: String,
+        age: Number,
+        city : String
+    })
+    //declaring new  model
+    const userModel = new mongoose.model("user",userSchema);
+
+    //declaring new user
+    const user =new userModel(req.body);
+
+    //saving user
+    user.save().then(
+        ()=>{
+            res.json({
+                "message": "user data saved successfully"
+            })
+        }
+    ).catch(
+            ()=>{
+                res.json({
+                    "message": "user data saving is failed"
+                })
+            }
+        )
+    })
+
+
+
+
 
 //handling put httpRequests
 app.put("/",(req,res)=>{
