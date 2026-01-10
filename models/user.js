@@ -7,7 +7,7 @@
         city : String
     })
     //declaring new  model
-    const userModel = new mongoose.model("user",userSchema);
+    const User = new mongoose.model("user",userSchema);
 
     //export userModel
-    export default userModel;
+    export default User;

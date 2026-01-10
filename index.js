@@ -1,7 +1,7 @@
 import express from 'express'; //import expresss
 import bodyParser from 'body-parser'; //import body-parser
 import mongoose from 'mongoose'; //import mongoose
-import userModel from './models/user.js';
+import User from './models/user.js';
 
 //initializ the backend software to a variable
 const app = express();
@@ -23,11 +23,16 @@ app.use(bodyParser.json());
 
 //handling get httpRequests
 app.get("/",(req,res)=>{
-    console.log(res);
-    console.log("Get request recieved");
-    res.json({
-        "message": "Success"
-    });
+    //geting saved user list
+    User.find().then(
+        (user)=>{
+            res.json(user)
+        }).catch(
+            (req,res) =>{
+                res.json({
+                    "message": "Error occured!"
+                })
+            })
 })
 
 //handling post httpRequests
@@ -35,7 +40,7 @@ app.post("/",(req,res)=>{
  
 
     //declaring new user
-    const user =new userModel(req.body);
+    const user = new User(req.body);
 
     //saving user
     user.save().then(
