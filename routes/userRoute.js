@@ -2,20 +2,16 @@ import express from 'express'; //import express
 const userRoute = express.Router(); //creating new router object
 
 //get requests handler
-userRoute.get("/",(req,res)=>{
-    //response
-    res.json({
-        "message": "Get request found."
-    })
-})
+userRoute.get("/",getUser);
 
 //post requests handler
-userRoute.post("/",(req,res)=>{
-    //response
-    res.json({
-        "message": "post request found."
-    })
-})
+userRoute.post("/",postUser);
+
+//put requests handler
+userRoute.put("/",putUser);
+
+//delete requests handler
+userRoute.delete("/",deleteUser);
 
 //export userRoute
 export default userRoute;
