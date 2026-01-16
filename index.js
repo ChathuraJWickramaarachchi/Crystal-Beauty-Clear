@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'; //import body-parser
 import mongoose from 'mongoose'; //import mongoose
 //import User from './models/user.js';
 import userRoute from './routes/userRoute.js';
+import itemRouter from './routes/itemRoute.js';
 
 //initializ the backend software to a variable
 const app = express();
@@ -24,6 +25,7 @@ app.use(bodyParser.json());
 
 //connecting new router to the app
 app.use("/user",userRoute);
+app.use("/item", itemRouter);
 
 //starting with initialzing port
 app.listen(3000, ()=>{
