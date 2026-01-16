@@ -1,5 +1,5 @@
 import express from 'express'; //import express
-import { deleteUser, getUser, postUser, putUser } from '../userController/userController'; //importing  the functions in conroller files
+import { deleteUser, getUser, postUser, putUser } from '../Controller/userController'; //importing  the functions in conroller files
 const userRoute = express.Router(); //creating new router object
 
 //get requests handler
