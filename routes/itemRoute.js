@@ -1,5 +1,5 @@
 import express from 'express'; //import express
-import { getItem, saveItem } from '../Controller/itemController';
+import { getItem, saveItem } from '../Controller/itemController.js';
 
 //create new router object
 const itemRouter = express.Router();

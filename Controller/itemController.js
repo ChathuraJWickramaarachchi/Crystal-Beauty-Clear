@@ -1,4 +1,4 @@
-import Item from "../models/item";
+import Item from "../models/item.js";
 
 //get requests hanler
 export function getItem(req,res){
