@@ -3,8 +3,8 @@ import Item from "../models/item.js";
 //get requests hanler
 export function getItem(req,res){
     Item.find().then(
-        (item)=>{
-            res.json(item);
+        (Item)=>{
+            res.json(Item);
         }   
      ).catch(
         ()=>{
