@@ -35,3 +35,9 @@ export function saveItem(req,res){
         }
     )
 } 
+
+export function goodItems(req,res){
+    res.json({
+        "message": "Good Item"
+    })
+}
