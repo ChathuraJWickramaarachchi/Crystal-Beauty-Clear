@@ -24,8 +24,8 @@ mongoose.connect("mongodb+srv://chathura:chathura123@cluster0.eeqbvtb.mongodb.ne
 app.use(bodyParser.json());
 
 //connecting new router to the app
-app.use("/user",userRoute);
-app.use("/item", itemRouter);
+app.use("/api/user",userRoute);
+app.use("/api/item", itemRouter);
 
 //starting with initialzing port
 app.listen(3000, ()=>{

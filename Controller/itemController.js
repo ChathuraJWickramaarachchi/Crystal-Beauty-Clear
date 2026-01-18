@@ -24,7 +24,7 @@ export function saveItem(req,res){
     item.save().then(
         () =>{
             res.json({
-                "message": "Item  data saved successfully."
+                "message": "Item data saved successfully."
             })
         }
     ).catch(
@@ -40,4 +40,27 @@ export function goodItems(req,res){
     res.json({
         "message": "Good Item"
     })
+}
+
+//search Items by name
+export function searchItems(req,res){
+    //const itemName = req.body.name;
+    //getting name by url
+    const itemName = req.params.name;
+    Item.find(
+        {
+            name : itemName
+        }
+    ).then(
+        (items)=>{
+            res.json(items)
+        }
+    ).catch(
+        ()=>{
+            res.json({
+                "message": "Error"
+            })
+        }
+    )
+
 }
